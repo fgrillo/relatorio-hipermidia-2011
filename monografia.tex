@@ -1,0 +1,111 @@
+\documentclass[brazil,ruledheader]{abnt}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+\usepackage{palatino}
+\usepackage {graphicx}
+\usepackage{babel}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+\makeatletter
+\makeatother
+
+\begin{document}
+\autor{Alexandre Michetti Manduca \hspace{2.3cm} nUsp: 4890832 \\ Filipe Del Nero Grillo \hspace{4cm} nUsp: 5378140}
+
+
+\titulo{Relatório do projeto final da disciplina de Hipermídia}
+
+
+\instituicao{Instituto de Ciências Matemáticas e de Computação \par Universidade
+de São Paulo \par ICMC - USP}
+
+
+\local{São Carlos - SP, Brasil}
+
+
+\data{12 de maio de 2011}
+
+\capa
+
+\tableofcontents{}
+
+\chapter{Introdução}\label{cap:introducao}
+
+	Com a evolução evolução da internet, as tecnologias que a compõem também estão em constante evolução. Em meados de 2004 surgia o termo \textit{Web 2.0}, que foi cunhado para se referir a uma nova geração de serviços que surgiam utilizando a \textit{Web} como plataforma. Uma das características marcantes dessa nova geração doe serviços era o fato se buscar que as aplicações web possuíssem uma interação com o usuário mais próxima da experiência de se utilizar um aplicativo \textit{desktop}.
+	
+	Uma das técnicas utilizadas para melhorar a interação com usuário é conhecida como AJAX (\textit{Assynchronous JavaScript and XML}), que será explicado adiante na seção \ref{sec:ajax}.
+
+	Seguindo esta evolução, no início de 2008 a W3C (\textit{World Wide Web Consortium})\footnote{W3C é um consórcio de empresas de tecnologia que tem por objetivo desenvolver padrões para criação e interpretação de conteúdo para a \textit{Web}} anunciou a primeira especificação do HTML5, uma nova versão da linguagem de marcação que é utilizada para formatar e organizar o conteúdo que está disponível na internet. O HTML5 está previsto para ser finalizado em 2012 e traz alterações muito interessantes no sentido de aproximar ainda mais a internet do comportamento de aplicações \textit{Desktop}. Dentre as novidades do HTML podemos destacar:
+	
+	\begin{itemize}
+		\item Novas API's para uso de gráficos
+		\item Melhora no uso de multimídia sem necessidade de \textit{softwares} de terceiros.
+		\item Aprimoramento de uso \textit{off-line}
+		\item Melhoria na depuração de erros
+		\item API para uso de canais de comunicação bidirecional (Websocket)
+	\end{itemize}
+	
+	O Websocket foi desenvolvido para que se melhore a comunicação no sentido servidor-cliente pois até então as especificações do HTML somente previam que os clientes sempre iniciavam a comunicação. O Websocket será explicado na seção \ref{sec:websockets}
+
+\section{AJAX}\label{sec:ajax}
+
+	texto
+	
+\section{Websockets}\label{sec:websockets}
+
+	texto
+
+\section{Objetivos do trabalho}\label{sec:objetivos}
+
+	O objetivo deste trabalho é realizar uma análise comparativa entre as técnologias AJAX e Websocket em uma aplicação que utiliza comunicação intensamente. Para tal serão duas aplicações de bate-papo simples e construídas especificamente para o propósito desta análise.
+
+	\begin{figure} [!ht]
+	\begin{center}
+	\includegraphics[width=1\textwidth]{images/chat_websocket.png}
+	\caption {Interface do bate-papo desenvolvido com a tecnologia Websocket.}
+	\label{fig:chat_socket}
+	
+	\includegraphics[width=1\textwidth]{images/chat_ajax.png}
+	\caption {Interface do bate-papo desenvolvido com a tecnologia AJAX.}
+	\label{fig:chat_ajax}
+	\end{center}
+	\end{figure}
+
+	Ambas as aplicações foram desenvolvidas com o objetivo de se manter o mesmo fluxo de interação e funcionarem de maneira exatamente igual aos olhos de um usuário leigo.
+
+
+\chapter{Preparação do experimento}\label{cap:preparacao}
+
+	texto
+
+\section{Tecnologias utilizadas}
+
+	texto
+
+\section{Ambiente}
+
+	texto
+	
+\section{Dados a serem coletados}
+
+	texto
+
+\chapter{Execução}\label{cap:execução}
+
+	texto
+
+\chapter{Resultados obtidos}\label{cap:conclusao}
+
+	texto
+	
+%\bibliographystyle{abnt-num}
+%\bibliography{monografia}
+
+%  \anexo
+%  \chapter{Glossário}
+%  Teste de apêndice
+
+
+\end{document}
