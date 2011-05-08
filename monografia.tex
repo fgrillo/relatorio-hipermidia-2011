@@ -55,7 +55,16 @@ de São Paulo \par ICMC - USP}
 	
 \section{Websockets}\label{sec:websockets}
 
-	texto
+	A Web vem sendo escolhida como plataforma de desenvolvimento e distribuição de uma gama cada vez maior de aplicações. Sistemas altamente interativos, que enviam dados para os usuários em tempo real ou mesmo que permitem que diversos usuários interajam em tempo real são cada vez mais comuns, como por exemplo o Twitter que mostra as atualizações dos seus amigos quase que instantaneamente, Foursquare que mostra os checkins dos seus amigos quase na hora em que acontecem, entre outros.
+
+	As tecnologias utilizadas na Web atualmente, mesmo o AJAX, são construídas sobre o paradigma request/response imposto pelo HTTP. Nesse paradigma, os clientes iniciam as interações com o sistema, o que não é adequado para a obtenção de informações em tempo real, ja que o servidor recebe primeiro as informações.
+
+	Para tentar contornar esses problemas, uma série de mecanismos construídos sobre a tecnologia AJAX e HTTP foram desenvolvidos, de modo a permitir a obtenção de dados em tempo real pelos clientes, ou pelo menos passar essa sensação para o usuário. Apenas para exemplificar, um mecanismo com esse fim conhecido como Long Polling, funciona mantedo conexões do cliente abertas até que um dado esteja disponível no servidor. Quando esse dado fica disponível e é enviado para o cliente, um novo request é feito, e sua conexão não é fechada até que um novo dados esteja disponível. O ciclo assim se repete passando a iluzão de que o servidor esta enviando em tempo real os dados para o cliente.
+
+	Contudo, todos esses mecanismos tem um problema, que é o overhead causado pelo HTTP. Por exemplo, cada request/response HTTP carrega uma série de informações de cabeçalho que podem tornar a latência dessas aplicações muito grande, tornando algumas aplicações inviáveis. Pense como exemplo, um jogo multiplayer de tiro que rode em um browser.
+
+	Visando esse tipo de aplicação, a W3C está padronizando uma nova API, que visa trazer conexões bidirecionais e full-duplex para os navegadores e servidores Web através de Sockets TCP. O handshake do WebSocket é feito via HTTP, que permite em sua versão 1.1 especificar cabeçalhos com essa finalidade. No entanto, a especificação WebSocket ainda tem algumas problemas até poder ser adotada de fato na Web, como o fato de que muitos navegadores, servidores de aplicação, servidores proxy e firewalls não estão preparados para ele.
+
 
 \section{Objetivos do trabalho}\label{sec:objetivos}
 
