@@ -88,11 +88,30 @@ de São Paulo \par ICMC - USP}
 
 \chapter{Preparação do experimento}\label{cap:preparacao}
 
-	texto
+	Para a execução do experimento, foram construídas duas aplicações de chat, uma baseada em Ajax e outra em WebSockets, e também dois scripts para simularem múltiplos clientes enviando e recebendo mensagens ao mesmo tempo no servidor.
+
+	Tirando a parte visual da aplicação, as implementações do lado do servidor foram feitas de maneira a seguirem uma implementação usual de Ajax e WebSockets. Ou seja, não ouve preocupação em manter semelhanças nas implementações, e sim em manter a mesma funcionalidade, com o modelo usual de desenvolvimento em cada tecnologia.
+
+	Na aplicação WebSockets, cada mensagem é repassada para todos os outros usuários no instante em que chega ao servidor. Enquanto que na implementação com Ajax, cada mensagem que chega é armazenada em um array em memória, e a cada 0,5 segundos cada cliente faz uma requisição para obter a lista de mensagens do servidor, passando como parametro a última mensagem que recebeu.
+
+	Dois servidores Ubuntu foram então preparados em uma solução de Cloud Computing, sendo que um executaria o servidor do chat e o outro o script para simular os clientes, de modo que um não interferice nas medições do outro. Tanto o servidor quanto o script imprimiam linhas de log, que foram coletados para a geração das comparações e gráficos utilizados neste relatório.
+
+	Os scripts foram executados de modo a simularem 40 clientes simultaneos, gerando uma mensagem por segundo, em um total de 200 mensagens cada. Lembrando que na aplicação Ajax, além do envio da mensagem, cada cliente fazia a requisição para novas mensagens a cada 0,5 segundo. Além disso, os 40 usuários foram inseridos a uma taxa de 1 novo usuário por segundo, até atingir os 40 usuários.
+
+	Os experimentos foram então executados, sendo que cada um levou cerca de 4 minutos para terminarem.
 
 \section{Tecnologias utilizadas}
 
-	Como apenas 
+	Este trabalho se baseia na comparação entre as tecnologias Ajax e WebSockets. Como WebSocket é uma tecnologia ainda em desenvolvimento, existem poucas linguagens, navegadores e servidores de aplicaçao que a suportam. Com essas restrições, decidimos por utilizar o framework Node.js, que suporta nativamente Ajax e WebSockets através do módulo Socket.IO.
+
+	Node.js é um framework para IO assincrono, cuja linguagem de programação é o Javascript, mas que é executado no servidor ao invés de em um navegador. JavaScript é ideal para IO assincrono, ja que é uma linguagem baseada em eventos e seu modelo de programação é não bloqueante. O motor JavaScript utilizado pelo Node.js é o Google V8, que é muito rápido, e compila o JavaScript para código nativo antes de sua execução.
+
+	A aplicação Web foi construida utilizando o framework de aplicações Web para Node.js chamado Express, juntamente com a linguagem de templates Jade. No lado do cliente, foram utilizados JQuery, JQuery UI e o 52Framework para montagem do layout das páginas.
+
+	O navegador utilizado para os testes da aplicação Web foi o Google Chrome 11. Os servidores utilizados para execução dos testes de performance foram máquinas virtuais Ubuntu 10.10 no Rackspace Cloud.
+
+	Para a execução dos testes de performance, foram implementados scripts em Node.js para as duas tecnologias. Com WebSockets, foi utilizado o módulo websocket-client, enquanto que para a implementação Ajax foram utilizados os recursos HTTP nativos do Node.JS.
+	
 
 \section{Ambiente}
 
