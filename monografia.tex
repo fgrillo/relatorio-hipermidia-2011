@@ -174,17 +174,119 @@ de São Paulo \par ICMC - USP}
 	%XXX Michetti, a amostragem só foi utilizada para geração dos gráficos :D, as médias e tamanhos daquele XLS foram tiradas do conjunto completo, eles não fariam sentidos se fossem tirados da amostra. XXX
 
 
+\chapter{Dados obtidos}\label{cap:dados obtidos}
+
+	A partir da execução dos experimentos e dos 4 arquivos coletados  obtivemos os seguintes dados.
+	
+	\section{Processo servidor}
+	
+		No processo servidor, foram analisadas o consumo dos processos e a quantidade de comunicação entre cliente e servidor. A tabela \ref{tab:xxx} mostra alguns dados extraídos 
+		
+		\begin{figure} [!ht]
+		\begin{center}
+		\includegraphics[width=1\textwidth]{images/processo_server_ajax.png}
+		\caption {Dados de consumo para o processo servidor com a implementação AJAX. (a) - Número de usuários conectados no servidor ao longo do tempo. (b) Consumo de memória do processo servidor "\%"\ no tempo. (c) - Consumo de CPU do processo servidor em "\%"\ no tempo.}
+		\label{fig:proc_server_ajax}
+		\end{center}
+		\end{figure}
+		
+		\begin{figure} [!ht]
+		\begin{center}
+		\includegraphics[width=1\textwidth]{images/processo_server_socket.png}
+		\caption {Dados de consumo para o processo servidor com a implementação Websocket. (a) - Número de usuários conectados no servidor ao longo do tempo. (b) Consumo de memória do processo servidor "\%"\ no tempo. (c) - Consumo de CPU do processo servidor em "\%"\ no tempo.}
+		\label{fig:proc_server_socket}
+		\end{center}
+		\end{figure}
+		
+		\begin{figure} [!ht]
+		\begin{center}
+		\includegraphics[width=1\textwidth]{images/mensages_ajax.png}
+		\caption {Quantidade de comunicação entre clientes e servidor na implementação com AJAX. (a) - Quantidade de comunicações por segundo ao longo do tempo da execução do experimento. (b) - Quantidade de usuários conectados no servidor ao longo do tempo.}
+		\label{fig:msg_server_ajax}
+		\end{center}
+		\end{figure}
+		
+		\begin{figure} [!ht]
+		\begin{center}
+		\includegraphics[width=1\textwidth]{images/mensages_socket.png}
+		\caption {Quantidade de comunicação entre clientes e servidor na implementação com Websocket. (a) - Quantidade de comunicações por segundo ao longo do tempo da execução do experimento. (b) - Quantidade de usuários conectados no servidor ao longo do tempo.}
+		\label{fig:msg_server_socket}
+		\end{center}
+		\end{figure}
+		
+	\section{Processo cliente}
+	
+		Nos processos cliente foi analisado principalmente o tamanho de cada comunicação entre cliente e servidor. O dados da Tabela \ref{tab:dados} foram extraídos a partir do conjunto total de dados, enquanto os gráficos das Figuras \ref{fig:msg_client_ajax} e \ref{fig:msg_client_socket} foram gerados a partir de amostras em função do número muito grande de dados.
+	
+		
+\begin{table}					
+\begin{center}
+	\begin{tabular}{ | l | c | c |  }
+	\hline
+	\textbf{Dado} & \textbf{AJAX} & \textbf{Websocket} \\
+	 \hline
+	 \hline
+	 
+	 Tempo inicial:  & 21:39:24 & 21:35:33 \\
+	\hline
+	Tempo final:  & 21:43:26 & 21:39:56 \\
+	\hline
+	Duração do experimento: & 4m 2s (242s) & 4m 22s (263s \\
+	\hline
+	\hline
+	Número de operações SEND:  & 8000 & 8000 \\
+	\hline
+	Número de operações RECEIVE:  & 16000 & 274115 \\
+	\hline
+	Soma dos tamanhos dos SEND:  & 6178000 (bytes) & 910255(bytes) \\
+	\hline
+	Soma dos tamanhos dos RECEIVE:  & 41394106 (bytes) & 37250287 (bytes)\\
+	\hline
+	Média de tamanho dos SEND:  & 772,25 (bytes) & 113,78 (bytes) \\
+	\hline
+	Média de tamanho dos RECEIVE:  & 2587,13 (bytes) & 135,89 (bytes) \\
+	\hline
+	Variância dos tamanhos dos SEND:  & 842,02 & 865,14 \\
+	\hline
+	Variância dos tamanhos dos RECEIVE:  & 158728,67 & 838,24 \\
+	\hline
+	Desvio padrão dos tamanhos dos SEND:  & 29,02 & 29,41\\
+	\hline
+	Desvio padrão dos tamanhos dos RECEIVE:  & 398,41 & 28,95 \\
+	\hline
+	\hline
+	Total de dados trafegados:  & 47572106 (bytes) & 38160542 (bytes) \\
+	\hline
+	Taxa de dados:  & 196578,95 (bytes/s) & 145097,12 (bytes/s) \\
+	\hline
+	\end{tabular}
+	
+	\caption{Dados coletados a partir de todo conjunto de dados do processo cliente implementado com AJAX}
+	\label{tab:dados}
+\end{center}
+\end{table}
+
+
+		\begin{figure} [!ht]
+		\begin{center}
+		\includegraphics[width=1\textwidth]{images/tamanho_mensagens_ajax.png}
+		\caption {Tamanho total das comunicações na implementação AJAX. (a) - Tamanho das mensages (bytes) tanto de \textit{sends} quanto de \textit{requests} ao longo do tempo. (b) - Número de usuários conectados no servidor ao longo do tempo. Este gráfico foi gerado a partir de uma amostra da massa de dados.}
+		\label{fig:msg_client_ajax}
+		\end{center}
+		\end{figure}
+		
+		\begin{figure} [!ht]
+		\begin{center}
+		\includegraphics[width=1\textwidth]{images/tamanho_mensagens_socket.png}
+		\caption {Tamanho total das comunicações na implementação com Websocket. (a) - Tamanho das mensages (bytes) tanto de \textit{sends} quanto de \textit{requests} ao longo do tempo. (b) - Número de usuários conectados no servidor ao longo do tempo. Este gráfico foi gerado a partir de uma amostra da massa de dados.}
+		\label{fig:msg_client_socket}
+		\end{center}
+		\end{figure}
+
 \chapter{Resultados obtidos}\label{cap:conclusao}
 
-	texto
+	texto - Criei um novo capitulo para mostrar os dados obtidos e pensei em deixar na conclusão apenas um texto bem sucinto tirando com as conclusões que tiramos dos dados da seção anterior
 	
-		\begin{figure} [!ht]
-	\begin{center}
-	\includegraphics[width=1\textwidth]{images/tamanho_mensagens_ajax.png}
-	\caption {teste.}
-	\label{fig:teste-grafico}
-	\end{center}
-	\end{figure}
 	
 %\bibliographystyle{abnt-num}
 %\bibliography{monografia}
