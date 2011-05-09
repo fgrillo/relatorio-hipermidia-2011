@@ -91,7 +91,16 @@ de São Paulo \par ICMC - USP}
 
 \section{Tecnologias utilizadas}
 
-	Como apenas 
+	Este trabalho se baseia na comparação entre as tecnologias Ajax e WebSockets. Como WebSocket é uma tecnologia ainda em desenvolvimento, existem poucas linguagens, navegadores e servidores de aplicaçao que a suportam. Com essas restrições, decidimos por utilizar o framework Node.js, que suporta nativamente Ajax e WebSockets através do módulo Socket.IO.
+
+	Node.js é um framework para IO assincrono, cuja linguagem de programação é o Javascript, mas que é executado no servidor ao invés de em um navegador. JavaScript é ideal para IO assincrono, ja que é uma linguagem baseada em eventos e seu modelo de programação é não bloqueante. O motor JavaScript utilizado pelo Node.js é o Google V8, que é muito rápido, e compila o JavaScript para código nativo antes de sua execução.
+
+	A aplicação Web foi construida utilizando o framework de aplicações Web para Node.js chamado Express, juntamente com a linguagem de templates Jade. No lado do cliente, foram utilizados JQuery, JQuery UI e o 52Framework para montagem do layout das páginas.
+
+	O navegador utilizado para os testes da aplicação Web foi o Google Chrome 11. Os servidores utilizados para execução dos testes de performance foram máquinas virtuais Ubuntu 10.10 no Rackspace Cloud.
+
+	Para a execução dos testes de performance, foram implementados scripts em Node.js para as duas tecnologias. Com WebSockets, foi utilizado o módulo websocket-client, enquanto que para a implementação Ajax foram utilizados os recursos HTTP nativos do Node.JS.
+	
 
 \section{Ambiente}
 
