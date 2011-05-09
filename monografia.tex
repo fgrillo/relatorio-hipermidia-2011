@@ -34,7 +34,7 @@ de São Paulo \par ICMC - USP}
 
 \chapter{Introdução}\label{cap:introducao}
 
-	Com a evolução evolução da internet, as tecnologias que a compõem também estão em constante evolução. Em meados de 2004 surgia o termo \textit{Web 2.0}, que foi cunhado para se referir a uma nova geração de serviços que surgiam utilizando a \textit{Web} como plataforma. Uma das características marcantes dessa nova geração doe serviços era o fato se buscar que as aplicações web possuíssem uma interação com o usuário mais próxima da experiência de se utilizar um aplicativo \textit{desktop}.
+	Com a evolução evolução da internet, as tecnologias que a compõem também estão em constante evolução. Em meados de 2004 surgia o termo \textit{Web 2.0}, que foi cunhado para se referir a uma nova geração de serviços que surgiam utilizando a \textit{Web} como plataforma. Uma das características marcantes dessa nova geração doe serviços era o fato se buscar que as aplicações \textit{Web} possuíssem uma interação com o usuário mais próxima da experiência de se utilizar um aplicativo \textit{desktop}.
 	
 	Uma das técnicas utilizadas para melhorar a interação com usuário é conhecida como AJAX (\textit{Assynchronous JavaScript and XML}), que será explicado adiante na seção \ref{sec:ajax}.
 
@@ -52,24 +52,28 @@ de São Paulo \par ICMC - USP}
 
 \section{AJAX}\label{sec:ajax}
 
-	texto
+	AJAX, sigla para \textit{Assynchronous JavaScript and XML}, é na verdade um conjunto de tecnologias já existentes mas utilizadas de uma forma nova, tornando possível uma aplicação desenvolvida em JavaScript que esteja rodando no cliente se comunicar com o servidor de forma assíncrona. Dessa forma, o usuário pode continuar trabalhando e interagindo com a página, enquanto dados são enviados e requisitados do servidor.
+		
+		Uma aplicação AJAX elimina a natureza interrompida de interação na \textit{web} introduzindo uma camada intermediária, a aplicação AJAX, entre o usuário e o servidor. Essa camada torna a velocidade de resposta da aplicação mais rápida. Ao invés de carregar uma página web, no início da sessão o navegador carrega a aplicação codificada em JavaScript e ela fica responsável por renderizar a interface e fazer a comunicação com o servidor de acordo com as necessidades do usuário.
+		
+		Como a aplicação AJAX está sempre ativa no \textit{browser} do cliente, a interação é contínua, os dados serão carregados a medida que forem necessários sem impedir o usuário de continuar interagindo com a aplicação.
 	
 \section{Websockets}\label{sec:websockets}
 
-	A Web vem sendo escolhida como plataforma de desenvolvimento e distribuição de uma gama cada vez maior de aplicações. Sistemas altamente interativos, que enviam dados para os usuários em tempo real ou mesmo que permitem que diversos usuários interajam em tempo real são cada vez mais comuns, como por exemplo o Twitter que mostra as atualizações dos seus amigos quase que instantaneamente, Foursquare que mostra os checkins dos seus amigos quase na hora em que acontecem, entre outros.
+	A \textit{Web} vem sendo escolhida como plataforma de desenvolvimento e distribuição de uma gama cada vez maior de aplicações. Sistemas altamente interativos, que enviam dados para os usuários em tempo real ou mesmo que permitem que diversos usuários interajam em tempo real são cada vez mais comuns, como por exemplo o Twitter que mostra as atualizações dos seus amigos quase que instantaneamente, Foursquare que mostra os \textit{check-ins} dos seus amigos quase na hora em que acontecem, entre outros.
 
-	As tecnologias utilizadas na Web atualmente, mesmo o AJAX, são construídas sobre o paradigma request/response imposto pelo HTTP. Nesse paradigma, os clientes iniciam as interações com o sistema, o que não é adequado para a obtenção de informações em tempo real, ja que o servidor recebe primeiro as informações.
+	As tecnologias utilizadas na \textit{Web} atualmente, mesmo o AJAX, são construídas sobre o paradigma \textit{request}/\textit{response} imposto pelo HTTP. Nesse paradigma, os clientes iniciam as interações com o sistema, o que não é adequado para a obtenção de informações em tempo real, já que o servidor recebe primeiro as informações.
 
-	Para tentar contornar esses problemas, uma série de mecanismos construídos sobre a tecnologia AJAX e HTTP foram desenvolvidos, de modo a permitir a obtenção de dados em tempo real pelos clientes, ou pelo menos passar essa sensação para o usuário. Apenas para exemplificar, um mecanismo com esse fim conhecido como Long Polling, funciona mantedo conexões do cliente abertas até que um dado esteja disponível no servidor. Quando esse dado fica disponível e é enviado para o cliente, um novo request é feito, e sua conexão não é fechada até que um novo dados esteja disponível. O ciclo assim se repete passando a iluzão de que o servidor esta enviando em tempo real os dados para o cliente.
+	Para tentar contornar esses problemas, uma série de mecanismos construídos sobre a tecnologia AJAX e HTTP foram desenvolvidos, de modo a permitir a obtenção de dados em tempo real pelos clientes, ou pelo menos passar essa sensação para o usuário. Apenas para exemplificar, um mecanismo com esse fim conhecido como \textit{Long Polling}, funciona mantendo conexões do cliente abertas até que um dado esteja disponível no servidor. Quando esse dado fica disponível e é enviado para o cliente, um novo \textit{request} é feito, e sua conexão não é fechada até que um novo dados esteja disponível. O ciclo assim se repete passando a ilusão de que o servidor esta enviando em tempo real os dados para o cliente.
 
-	Contudo, todos esses mecanismos tem um problema, que é o overhead causado pelo HTTP. Por exemplo, cada request/response HTTP carrega uma série de informações de cabeçalho que podem tornar a latência dessas aplicações muito grande, tornando algumas aplicações inviáveis. Pense como exemplo, um jogo multiplayer de tiro que rode em um browser.
+	Contudo, todos esses mecanismos tem um problema, que é o \textit{overhead} causado pelo HTTP. Por exemplo, cada \textit{request}/\textit{response} HTTP carrega uma série de informações de cabeçalho que podem tornar a latência dessas aplicações muito grande, tornando algumas aplicações inviáveis. Pense como exemplo, um jogo \textit{multiplayer} de tiro que rode em um \textit{browser}.
 
-	Visando esse tipo de aplicação, a W3C está padronizando uma nova API, que visa trazer conexões bidirecionais e full-duplex para os navegadores e servidores Web através de Sockets TCP. O handshake do WebSocket é feito via HTTP, que permite em sua versão 1.1 especificar cabeçalhos com essa finalidade. No entanto, a especificação WebSocket ainda tem algumas problemas até poder ser adotada de fato na Web, como o fato de que muitos navegadores, servidores de aplicação, servidores proxy e firewalls não estão preparados para ele.
+	Visando esse tipo de aplicação, a W3C está padronizando uma nova API, que visa trazer conexões bidirecionais e \textit{full-duplex} para os navegadores e servidores \textit{Web} através de Sockets TCP. O \textit{handshake} do WebSocket é feito via HTTP, que permite em sua versão 1.1 especificar cabeçalhos com essa finalidade. No entanto, a especificação WebSocket ainda tem algumas problemas até poder ser adotada de fato na \textit{Web}, como o fato de que muitos navegadores, servidores de aplicação, servidores \textit{proxy} e \textit{firewalls} não estão preparados para ele.
 
 
 \section{Objetivos do trabalho}\label{sec:objetivos}
 
-	O objetivo deste trabalho é realizar uma análise comparativa entre as técnologias AJAX e Websocket em uma aplicação que utiliza comunicação intensamente. Para tal serão duas aplicações de bate-papo simples e construídas especificamente para o propósito desta análise.
+	O objetivo deste trabalho é realizar uma análise comparativa entre as tecnologias AJAX e Websocket em uma aplicação que utiliza comunicação intensamente. Para tal serão desenvolvidas duas aplicações de bate-papo simples e construídas especificamente para o propósito desta análise.
 
 	\begin{figure} [!ht]
 	\begin{center}
@@ -83,30 +87,30 @@ de São Paulo \par ICMC - USP}
 	\end{center}
 	\end{figure}
 
-	Ambas as aplicações foram desenvolvidas com o objetivo de se manter o mesmo fluxo de interação e funcionarem de maneira exatamente igual aos olhos de um usuário leigo.
+	Ambas as aplicações foram desenvolvidas com o objetivo de se manter o mesmo fluxo de interação e funcionarem de maneira exatamente igual aos olhos de um usuário leigo. Nas Figuras \ref{fig:chat_socket} e \ref{fig:chat_ajax}, podemos ver as \textit{interfaces} das aplicações implementadas com Websocket a AJAX, respectivamente. Com exceção da palavra "ajax" no título da página, nenhuma outra distinção é visível para o usuário.
 
 
 \chapter{Preparação do experimento}\label{cap:preparacao}
 
-	Para a execução do experimento, foram construídas duas aplicações de chat, uma baseada em Ajax e outra em WebSockets, e também dois scripts para simularem múltiplos clientes enviando e recebendo mensagens ao mesmo tempo no servidor.
+	Para a execução do experimento, foram construídas duas aplicações de chat, uma baseada em AJAX e outra em WebSockets, e também dois \textit{scripts} para simularem múltiplos clientes enviando e recebendo mensagens ao mesmo tempo no servidor.
 
-	Tirando a parte visual da aplicação, as implementações do lado do servidor foram feitas de maneira a seguirem uma implementação usual de Ajax e WebSockets. Ou seja, não ouve preocupação em manter semelhanças nas implementações, e sim em manter a mesma funcionalidade, com o modelo usual de desenvolvimento em cada tecnologia.
+	Tirando a parte visual da aplicação, as implementações do lado do servidor foram feitas de maneira a seguirem uma implementação usual de AJAX e WebSockets. Ou seja, não ouve preocupação em manter semelhanças nas implementações, e sim em manter a mesma funcionalidade, com o modelo usual de desenvolvimento em cada tecnologia.
 
-	Na aplicação WebSockets, cada mensagem é repassada para todos os outros usuários no instante em que chega ao servidor. Enquanto que na implementação com Ajax, cada mensagem que chega é armazenada em um array em memória, e a cada 0,5 segundos cada cliente faz uma requisição para obter a lista de mensagens do servidor, passando como parametro a última mensagem que recebeu.
+	Na aplicação WebSockets, cada mensagem é repassada para todos os outros usuários no instante em que chega ao servidor. Enquanto que na implementação com AJAX, cada mensagem que chega é armazenada em um array em memória, e a cada 0,5 segundos cada cliente faz uma requisição para obter a lista de mensagens do servidor, passando como parâmetro a última mensagem que recebeu.
 
-	Dois servidores Ubuntu foram então preparados em uma solução de Cloud Computing, sendo que um executaria o servidor do chat e o outro o script para simular os clientes, de modo que um não interferice nas medições do outro. Tanto o servidor quanto o script imprimiam linhas de log, que foram coletados para a geração das comparações e gráficos utilizados neste relatório.
+	Dois servidores Ubuntu foram então preparados em uma solução de Cloud Computing, sendo que um executaria o servidor do chat e o outro o script para simular os clientes, de modo que um não interferisse nas medições do outro. Tanto o servidor quanto o \textit{script} imprimiam linhas de log, que foram coletados para a geração das comparações e gráficos utilizados neste relatório.
 
 \section{Tecnologias utilizadas}
 
-	Este trabalho se baseia na comparação entre as tecnologias Ajax e WebSockets. Como WebSocket é uma tecnologia ainda em desenvolvimento, existem poucas linguagens, navegadores e servidores de aplicaçao que a suportam. Com essas restrições, decidimos por utilizar o framework Node.js, que suporta nativamente Ajax e WebSockets através do módulo Socket.IO.
+	Este trabalho se baseia na comparação entre as tecnologias AJAX e WebSockets. Como WebSocket é uma tecnologia ainda em desenvolvimento, existem poucas linguagens, navegadores e servidores de aplicação que a suportam. Com essas restrições, decidimos por utilizar o framework Node.js, que suporta nativamente AJAX e WebSockets através do módulo Socket.IO.
 
-	Node.js é um framework para IO assincrono, cuja linguagem de programação é o Javascript, mas que é executado no servidor ao invés de em um navegador. JavaScript é ideal para IO assincrono, ja que é uma linguagem baseada em eventos e seu modelo de programação é não bloqueante. O motor JavaScript utilizado pelo Node.js é o Google V8, que é muito rápido, e compila o JavaScript para código nativo antes de sua execução.
+	Node.js é um framework para IO assincrono, cuja linguagem de programação é o Javascript, mas que é executado no servidor ao invés de em um navegador. JavaScript é ideal para IO assíncrono, já que é uma linguagem baseada em eventos e seu modelo de programação é não bloqueante. O motor JavaScript utilizado pelo Node.js é o Google V8, que é muito rápido, e compila o JavaScript para código nativo antes de sua execução.
 
-	A aplicação Web foi construida utilizando o framework de aplicações Web para Node.js chamado Express, juntamente com a linguagem de templates Jade. No lado do cliente, foram utilizados JQuery, JQuery UI e o 52Framework para montagem do layout das páginas.
+	A aplicação \textit{Web} foi construida utilizando o framework de aplicações \textit{Web} para Node.js chamado Express, juntamente com a linguagem de templates Jade. No lado do cliente, foram utilizados JQuery, JQuery UI e o 52Framework para montagem do \textit{layout} das páginas.
 
-	O navegador utilizado para os testes da aplicação Web foi o Google Chrome 11. Os servidores utilizados para execução dos testes de performance foram máquinas virtuais Ubuntu 10.10 no Rackspace Cloud.
+	O navegador utilizado para os testes da aplicação \textit{Web} foi o Google Chrome 11. Os servidores utilizados para execução dos testes de performance foram máquinas virtuais Ubuntu 10.10 no Rackspace Cloud.
 
-	Para a execução dos testes de performance, foram implementados scripts em Node.js para as duas tecnologias. Com WebSockets, foi utilizado o módulo websocket-client, enquanto que para a implementação Ajax foram utilizados os recursos HTTP nativos do Node.JS.
+	Para a execução dos testes de performance, foram implementados \textit{scripts} em Node.js para as duas tecnologias. Com WebSockets, foi utilizado o módulo websocket-client, enquanto que para a implementação AJAX foram utilizados os recursos HTTP nativos do Node.JS.
 	
 
 \section{Ambiente}
@@ -133,6 +137,17 @@ de São Paulo \par ICMC - USP}
 	\end{Verbatim}
 	}
 	
+	Formato:
+	
+	\begin{enumerate}
+		\item \textbf{Timestamp:} HH:MM:SS:000, Hora, Minutos, Segundos e Milisegundos.
+		\item \textbf{Número de usuários:} O número de usuários conectados à sala de bate-papo no momento da impressão da linha.
+		\item \textbf{Consumo de memória:} A porcentagem de memória que o processo servidor está utilizando no momento da impressão. 
+		\item \textbf{Consumo de CPU:} A porcentagem da CPU que está sendo utilizada pelo servidor no momento da impressão.
+		\item \textbf{Total de mensagens:} Soma de todas as comunicações realizadas com todos os clientes
+		\item \textbf{Número de mensagens desde o último log: } Número de comunicações com os clientes desde a impressão da linha de log anterior.
+	\end{enumerate}
+	
 	Os clientes coletam dados a cada comunicação com o servidor, seja ela recebendo ou enviando mensagens no bate-papo e cada linha tem o seguinte formato:
 	
 	{\linespread{1} \scriptsize \begin{Verbatim}[frame=single]
@@ -140,18 +155,36 @@ de São Paulo \par ICMC - USP}
 	\end{Verbatim}
 	}
 	
+	\begin{enumerate}
+		\item \textbf{Timestamp:} Igual ao servidor: HH:MM:SS:000 - Hora, Minutos, Segundos e Milisegundos
+		\item \textbf{ID do usuário:} Qual o usuário que enviou a mensagem
+		\item \textbf{Operação:} Qual o tipo da mensagem: RECEIVE quando o cliente está recebendo mensagens do servidor e SEND quando o cliente está enviando mensagens para o servidor.
+		\item \textbf{Número de usuários:} O número de usuários conectados à sala de bate-papo no momento da impressão da linha.
+		\item \textbf{Tamanho da mensagem:} O tamanho total da mensagem referente à essa linha de log. No caso da implementação com AJAX inclui a soma dos cabeçalhos e conteúdos do \textit{request} e \textit{response} e no caso da implementação com Websockets conta o o conteúdo e dados utilizados pelo protocolo de comunicação do Socket.IO.
+	\end{enumerate}
+	
 	Os dados relativos a entrada e saída da sala de bate-papo são desconsideradas neste experimento.
 
 \chapter{Execução}\label{cap:execução}
 
-	Os scripts foram executados de modo a simularem 40 clientes simultaneos, gerando uma mensagem por segundo, em um total de 200 mensagens cada. Lembrando que na aplicação Ajax, além do envio da mensagem, cada cliente fazia a requisição para novas mensagens a cada 0,5 segundo. Além disso, os 40 usuários foram inseridos a uma taxa de 1 novo usuário por segundo, até atingir os 40 usuários.
+	Os \textit{scripts} foram executados de modo a simularem 40 clientes simultâneos, gerando uma mensagem por segundo, em um total de 200 mensagens cada. Lembrando que na aplicação AJAX, além do envio da mensagem, cada cliente fazia a requisição para novas mensagens a cada 0,5 segundo. Além disso, os 40 usuários foram inseridos a uma taxa de 1 novo usuário por segundo, até atingir os 40 usuários.
 
 	Os experimentos foram então executados, sendo que cada um levou cerca de 4 minutos para terminarem. Os arquivos de log dos servidores e dos clientes foram coletados e utilizados para a análise dos dados e para geração dos gráficos. Foi necessário colher uma amostra dos logs dos 	clientes, já que esses geraram uma quantidade muito grande de dados, principalmente a implementação com WebSockets.
+	
+	%XXX Michetti, a amostragem só foi utilizada para geração dos gráficos :D, as médias e tamanhos daquele XLS foram tiradas do conjunto completo, eles não fariam sentidos se fossem tirados da amostra. XXX
 
 
 \chapter{Resultados obtidos}\label{cap:conclusao}
 
 	texto
+	
+		\begin{figure} [!ht]
+	\begin{center}
+	\includegraphics[width=1\textwidth]{images/tamanho_mensagens_ajax.png}
+	\caption {teste.}
+	\label{fig:teste-grafico}
+	\end{center}
+	\end{figure}
 	
 %\bibliographystyle{abnt-num}
 %\bibliography{monografia}
