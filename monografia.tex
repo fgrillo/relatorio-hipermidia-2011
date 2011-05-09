@@ -7,6 +7,7 @@
 \usepackage{babel}
 \usepackage{setspace}
 \usepackage{hyperref}
+\usepackage {fancyvrb}
 
 \makeatletter
 \makeatother
@@ -107,7 +108,24 @@ de São Paulo \par ICMC - USP}
 	
 \section{Dados a serem coletados}
 
-	texto
+	Durante a execução do experimentos, dados serão coletados tanto nos clientes quanto nos servidores. Em ambos os casos os dados são coletados através de impressões na tela com padrão CSV (\textit{Comma Separated Values}) que são redirecionadas para um arquivo de texto no momento da execução.
+	
+	Os servidores coletam dados em intervalos de 1 em 1 segundo e cada linha tem o seguinte formato:
+	
+	{\linespread{1} \scriptsize \begin{Verbatim}[frame=single]
+"Timestamp,Número de usuários,Consumo de memória,Consumo de CPU,Total de mensagens,
+    Número de mensagens desde o último log"
+	\end{Verbatim}
+	}
+	
+	Os clientes coletam dados a cada comunicação com o servidor, seja ela recebendo ou enviando mensagens no bate-papo e cada linha tem o seguinte formato:
+	
+	{\linespread{1} \scriptsize \begin{Verbatim}[frame=single]
+"Timestamp,ID do usuário,Operação,Número de usuários,Tamanho da mensagem"
+	\end{Verbatim}
+	}
+	
+	Os dados relativos a entrada e saída da sala de bate-papo são desconsideradas neste experimento.
 
 \chapter{Execução}\label{cap:execução}
 
