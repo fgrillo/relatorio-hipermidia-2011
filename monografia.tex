@@ -34,33 +34,33 @@ de São Paulo \par ICMC - USP}
 
 \chapter{Introdução}\label{cap:introducao}
 
-	Com a evolução evolução da internet, as tecnologias que a compõem também estão em constante evolução. Em meados de 2004 surgia o termo \textit{Web 2.0}, que foi cunhado para se referir a uma nova geração de serviços que surgiam utilizando a \textit{Web} como plataforma. Uma das características marcantes dessa nova geração doe serviços era o fato se buscar que as aplicações \textit{Web} possuíssem uma interação com o usuário mais próxima da experiência de se utilizar um aplicativo \textit{desktop}.
+	Com a evolução evolução da internet, as tecnologias que a compõem também estão em constante desenvolvimento. Em meados de 2004 surgia o termo \textit{Web 2.0}, que foi cunhado para se referir a uma nova geração de serviços que surgiam utilizando a \textit{Web} como plataforma. Uma das características marcantes dessa nova geração de serviços era o fato se buscar que as aplicações \textit{Web} possuíssem uma interação com o usuário mais próxima da experiência de se utilizar um aplicativo \textit{desktop}.
 	
 	Uma das técnicas utilizadas para melhorar a interação com usuário é conhecida como AJAX (\textit{Assynchronous JavaScript and XML}), que será explicado adiante na seção \ref{sec:ajax}.
 
-	Seguindo esta evolução, no início de 2008 a W3C (\textit{World Wide Web Consortium})\footnote{W3C é um consórcio de empresas de tecnologia que tem por objetivo desenvolver padrões para criação e interpretação de conteúdo para a \textit{Web}} anunciou a primeira especificação do HTML5, uma nova versão da linguagem de marcação que é utilizada para formatar e organizar o conteúdo que está disponível na internet. O HTML5 está previsto para ser finalizado em 2012 e traz alterações muito interessantes no sentido de aproximar ainda mais a internet do comportamento de aplicações \textit{Desktop}. Dentre as novidades do HTML podemos destacar:
+	Seguindo esta evolução, no início de 2008 a W3C (\textit{World Wide Web Consortium})\footnote{W3C é um consórcio de empresas de tecnologia que tem por objetivo desenvolver padrões para criação e interpretação de conteúdo para a \textit{Web}} anunciou a primeira especificação do HTML5, uma nova versão da linguagem de marcação que é utilizada para formatar e organizar o conteúdo que está disponível na internet. O HTML5 está previsto para ser finalizado no ano de 2012 e traz alterações muito interessantes no sentido de aproximar ainda mais a internet do comportamento de aplicações \textit{Desktop}. Dentre as novidades do HTML5 podemos destacar:
 	
 	\begin{itemize}
-		\item Novas API's para uso de gráficos
-		\item Melhora no uso de multimídia sem necessidade de \textit{softwares} de terceiros.
-		\item Aprimoramento de uso \textit{off-line}
-		\item Melhoria na depuração de erros
-		\item API para uso de canais de comunicação bidirecional (Websocket)
+		\item Novas API's para uso de gráficos;
+		\item Melhora no uso de multimídia sem necessidade de \textit{softwares} de terceiros;
+		\item Aprimoramento de uso \textit{off-line};
+		\item Melhoria na depuração de erros;
+		\item API para uso de canais de comunicação bidirecional (Websocket).
 	\end{itemize}
 	
-	O Websocket foi desenvolvido para que se melhore a comunicação no sentido servidor-cliente pois até então as especificações do HTML somente previam que os clientes sempre iniciavam a comunicação. O Websocket será explicado na seção \ref{sec:websockets}
+	A \textit{Web} vem sendo escolhida como plataforma de desenvolvimento e distribuição de uma gama cada vez maior de aplicações. Sistemas altamente interativos, que enviam dados para os usuários em tempo real ou mesmo que permitem que diversos usuários interajam em tempo real são cada vez mais comuns, como por exemplo o Twitter\footnote{http://www.twitter.com} que mostra as atualizações dos seus amigos quase que instantâneamente, Foursquare\footnote{https://foursquare.com/} que mostra os \textit{check-ins} dos seus amigos quase na hora em que acontecem, entre outros.
+	
+	O Websocket foi desenvolvido para que se melhore ainda mais a comunicação entre o cliente e o servidor para aplicações de tempo real. O Websocket será explicado na seção \ref{sec:websockets}
 
 \section{AJAX}\label{sec:ajax}
 
 	AJAX, sigla para \textit{Assynchronous JavaScript and XML}, é na verdade um conjunto de tecnologias já existentes mas utilizadas de uma forma nova, tornando possível uma aplicação desenvolvida em JavaScript que esteja rodando no cliente se comunicar com o servidor de forma assíncrona. Dessa forma, o usuário pode continuar trabalhando e interagindo com a página, enquanto dados são enviados e requisitados do servidor.
 		
-		Uma aplicação AJAX elimina a natureza interrompida de interação na \textit{web} introduzindo uma camada intermediária, a aplicação AJAX, entre o usuário e o servidor. Essa camada torna a velocidade de resposta da aplicação mais rápida. Ao invés de carregar uma página web, no início da sessão o navegador carrega a aplicação codificada em JavaScript e ela fica responsável por renderizar a interface e fazer a comunicação com o servidor de acordo com as necessidades do usuário.
+	Uma aplicação AJAX elimina a natureza interrompida de interação na \textit{web} introduzindo uma camada intermediária, a aplicação AJAX, entre o usuário e o servidor. Essa camada torna a velocidade de resposta da aplicação mais rápida. Ao invés de carregar uma página web, no início da sessão o navegador carrega a aplicação codificada em JavaScript e ela fica responsável por renderizar a interface e fazer a comunicação com o servidor de acordo com as necessidades do usuário.
 		
-		Como a aplicação AJAX está sempre ativa no \textit{browser} do cliente, a interação é contínua, os dados serão carregados a medida que forem necessários sem impedir o usuário de continuar interagindo com a aplicação.
+	Como a aplicação AJAX está sempre ativa no \textit{browser} do cliente, a interação é contínua, os dados serão carregados a medida que forem necessários sem impedir o usuário de continuar interagindo com a aplicação.
 	
 \section{Websockets}\label{sec:websockets}
-
-	A \textit{Web} vem sendo escolhida como plataforma de desenvolvimento e distribuição de uma gama cada vez maior de aplicações. Sistemas altamente interativos, que enviam dados para os usuários em tempo real ou mesmo que permitem que diversos usuários interajam em tempo real são cada vez mais comuns, como por exemplo o Twitter que mostra as atualizações dos seus amigos quase que instantaneamente, Foursquare que mostra os \textit{check-ins} dos seus amigos quase na hora em que acontecem, entre outros.
 
 	As tecnologias utilizadas na \textit{Web} atualmente, mesmo o AJAX, são construídas sobre o paradigma \textit{request}/\textit{response} imposto pelo HTTP. Nesse paradigma, os clientes iniciam as interações com o sistema, o que não é adequado para a obtenção de informações em tempo real, já que o servidor recebe primeiro as informações.
 
