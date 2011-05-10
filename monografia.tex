@@ -167,11 +167,11 @@ de São Paulo \par ICMC - USP}
 
 \chapter{Execução}\label{cap:execução}
 
-	Os \textit{scripts} foram executados de modo a simularem 40 clientes simultâneos, gerando uma mensagem por segundo, em um total de 200 mensagens cada. Lembrando que na aplicação AJAX, além do envio da mensagem, cada cliente fazia a requisição para novas mensagens a cada 0,5 segundo. Além disso, os 40 usuários foram inseridos a uma taxa de 1 novo usuário por segundo, até atingir os 40 usuários.
+	Os \textit{scripts} foram executados de modo a simularem 40 clientes simultâneos, gerando uma mensagem por segundo, em um total de 200 mensagens cada. Lembrando que na aplicação AJAX, além do envio da mensagem, cada cliente fazia a requisição para novas mensagens a cada 0,5 segundos. Além disso, os 40 usuários foram inseridos a uma taxa de 1 novo usuário por segundo, até atingir os 40 usuários.
 
-	Os experimentos foram então executados, sendo que cada um levou cerca de 4 minutos para terminarem. Os arquivos de log dos servidores e dos clientes foram coletados e utilizados para a análise dos dados e para geração dos gráficos. Foi necessário colher uma amostra dos logs dos 	clientes, já que esses geraram uma quantidade muito grande de dados, principalmente a implementação com WebSockets.
-	
-	%XXX Michetti, a amostragem só foi utilizada para geração dos gráficos :D, as médias e tamanhos daquele XLS foram tiradas do conjunto completo, eles não fariam sentidos se fossem tirados da amostra. XXX
+	O número de 40 usuários foi escolhido, pois com mais de 50 usuários a implementação do script de benchmark com WebSockets e mostrou instável, devido ao grande número de mensagens enviadas, e pelo fato de que o script necessitava fazer umarshalling de cada mensagem para ver do que se travatava e então calcular os dados relevantes. Nós também optamos por adicionar 1 usuário a cada 1 segundo para não causar uma carga excessiva e repentina no sevidor. Além disso, executamos o script de benchmark em uma máquina diferente da máquina servidora, de modo que um processo não interferisse no outro.
+
+	Os experimentos foram então executados, sendo que cada um levou cerca de 4 minutos para terminar. Os arquivos de log dos servidores e dos clientes foram coletados e utilizados para a análise dos dados e para geração dos gráficos. No entanto, para gerar gráficos satisfatoriamente, foi necessário selecionar  uma amostra, já que esses os experimentos geraram uma quantidade muito grande de dados, principalmente na implementação com WebSockets. Assim, na implementação com WebSockets, 1 em cada 200 linhas dos arquivos de log foi utilizada na geração dos gráficos, enquanto que na implementação com Ajax, que teve menos registros nos logs, 1 em cada 20 linhas do arquivo de log foi utilizada.
 
 
 \chapter{Dados obtidos}\label{cap:dados obtidos}
