@@ -180,7 +180,7 @@ de São Paulo \par ICMC - USP}
 	
 	\section{Processo servidor}
 	
-		No processo servidor, foram analisadas o consumo dos processos e a quantidade de comunicação entre cliente e servidor. A tabela \ref{tab:xxx} mostra alguns dados extraídos 
+		No processo servidor, foram analisadas o consumo dos processos e a quantidade de comunicação entre cliente e servidor. A seguir temos alguns gráficos que foram gerados a partir dos dados obtidos. 
 		
 		\begin{figure} [!ht]
 		\begin{center}
@@ -285,13 +285,23 @@ de São Paulo \par ICMC - USP}
 
 \chapter{Resultados obtidos}\label{cap:conclusao}
 
-	A partir dos dados coletados, podemos verificar que ambas as tecnologias tem vantagens e desvantagens. A tecnologia WebSocket proporciona a transmissão de mensagens entre os usuários do chat em tempo real, mas ao mesmo tempo, gera uma quantidade muito maior de mensagens quando comparado a uma implementação comum em AJAX, embora cada mensagem tenha um tamanho menor.
+	A partir dos dados coletados, podemos verificar que ambas as tecnologias tem vantagens e desvantagens. A tecnologia WebSocket proporciona a transmissão de mensagens entre os usuários do chat em tempo real, mas ao mesmo tempo, gera uma quantidade muito maior de mensagens quando comparado a uma implementação comum em AJAX, como pode ser visto na Tabela \ref{tab:dados} onde temos que o \textit{script} da implementação AJAX teve 16000 mensagens de RECEIVE enquanto o \textit{script} da implementação Websocket tragefou  274115 mensagens deste mesmo tipo, muito embora cada mensagem tenha um tamanho menor nesta última implementação.
+	
+	Isso se deve principalmente ao tamanho dos cabeçalhos que são transmitidos em cada requisição AJAX. Na Tabela \ref{tab:dados} nota-se que enquanto uma mensagem de SEND da implementação AJAX possui em média 772,25 bytes, as mensagens de SEND da implementação Websocket possuem em média 113,78 bytes. Ambas possuem uma variação pequena que pode ser confirmado pelos seus desvios padrão 29,02 e 29,41 respectivamente e que pode ser explicada pelo tamanho do conteúdo randômico que foi utilizado nas implementações dos \textit{scripts} de teste.
+	
+	Essa grande quantidade de mensagens tornou a implementação em WebSockets como está praticamente inviável, uma vez que o próprio \textit{script} de \textit{benchmark} teve trabalho para tratar todas as mensagens que chegavam. O servidor no entanto, não foi muito afetado por essa carga, uma vez que ele simplesmente despacha as mensagens, sem ter que processá-las. Essa característica fez com que o servidor em WebSockets utiliza-se menos memória quanto comparado a implementação em Ajax, que precisa guardar as mensagens em memória até que os usuários faziam uma requisição Ajax para obtê-las. Em relação ao uso de CPU a implementação com Websockets foi consideravelmente maior, embora os experimentos não tivessem objetivo de testar os limites de carga de cada implementação, notamos pela comparação das curvas (c) nas Figuras \ref{fig:proc_server_ajax} e \ref{fig:proc_server_socket} que a diferença foi substancial, embora mais testes sejam necessários para se estabeler até que ponto este consumo afetar o servidor com o crescimento do número de usuários e/ou mensagens.
 
-	Essa grande quantidade de mensagens tornou a implementação em WebSockets como está praticamente inviável, uma vez que o próprio \textit{script} de \textit{benchmark} teve trabalho para tratar todas as mensagens que chegavam. O servidor no entanto, não foi muito afetado por essa carga, uma vez que ele simplesmente despacha as mensagens, sem ter que processá-las. Essa característica fez com que o servidor em WebSockets utiliza-se menos memória quanto comparado a implementação em Ajax, que precisa guardar as mensagens em memória até que os usuários faziam uma requisição Ajax para obtê-las. No entanto, o uso de CPU com WebSockets foi maior.
+	Notamos que a implementação em Ajax como está, utilizando um \textit{array} de mensagens, que é consultado pelos usuários de tempo em tempo, cria um mecanismo de \textit{buffer/cache}, que melhora o uso do sistema trazendo vantagens quando comparados a implementação com WebSockets. Em função deste efeito de \textit{buffer} nota-se através dos dados coletados que o tamanho das mensagens de RECEIVE virão muito no implementação com AJAX enquanto a implementação com AJAX essas mensagens possuem um tamanho mais bem comportado. Além disso, um tempo de 0,5 segundos para a obtenção das mensagens não é tão rápido quando na versão em WebSockets, mas esse tempo pode é bastante aceitável para aplicações como um bate-papo.
+	
+	Seria diferente se estivéssemos comparando um jogo on-line onde diversos jogadores podem interagir uns com os outros, neste caso a implementação Websockets traria uma experiência de uso muito melhor do que a AJAX.
 
-	Notamos que a implementação em Ajax como está, utilizando um \textit{array} de mensagens, que é consultado pelos usuários de tempo em tempo, cria um mecanismo de \textit{buffer/cache}, que melhora o uso do sistema trazendo vantagens quando comparados a implementação com WebSockets. Além disso, um tempo de 0,5 segundos para a obtenção das mensagens não é tão rápido quando na versão em WebSockets, mas esse tempo pode ser considerado aceitável para aplicações de chat.
+	Por outro lado, a implementação em WebSockets poderia ser modificada, de modo a guardar as mensagens para cada usuário por um tempo, e estão despachá-las em lote para os usuários, em um mecanismo parecido com o Ajax. Teoricamente, isso melhoraria o desempenho da aplicação WebSockets, tirando ainda o \textit{overhead} do HTTP, como latência e cabeçalhos desnecessários. Isso no entanto, eliminaria uma das principais vantagens desta API que é a comunicação em tempo real.
+	
+	
+	XXX FALAR SOBRE O TAMANHO TRAFEGADO E COMO ISSO SERIA DIFERENTE SE UTILIZASSEMOS MENSAGENS MAIORES XXX
+	
+	É importante salientar que a tecnologia de Websockets não foi criada com a intenção de substituir as técnicas AJAX, e sim para explorar alguns de seus pontos fracos. Portanto o que deve ser feito quando se planeja construir uma aplicação é ponderar sobre as vantagens e desvantagens de cada uma em relação as necessidades específicas do seu projeto.
 
-	Por outro lado, a implementação em WebSockets poderia ser modificada, de modo a guardar as mensagens para cada usuário por um tempo, e estão despachá-las em lote para os usuários, em um mecanismo parecido com o Ajax. Teoricamente, isso melhoraria o desempenho da aplicação WebSockets, tirando ainda o \textit{overhead} do HTTP, como latência e cabeçalhos desnecessários. Isso no entanto, diminuiria a velocidade com que os usuários recebem as mensagens.
 	
 	
 %\bibliographystyle{abnt-num}
