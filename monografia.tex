@@ -38,7 +38,7 @@ de São Paulo \par ICMC - USP}
 	
 	Uma das técnicas utilizadas para melhorar a interação com usuário é conhecida como AJAX (\textit{Assynchronous JavaScript and XML}), que será explicado adiante na seção \ref{sec:ajax}.
 
-	Seguindo esta evolução, no início de 2008 a W3C (\textit{World Wide Web Consortium})\footnote{W3C é um consórcio de empresas de tecnologia que tem por objetivo desenvolver padrões para criação e interpretação de conteúdo para a \textit{Web}} anunciou a primeira especificação do HTML5, uma nova versão da linguagem de marcação que é utilizada para formatar e organizar o conteúdo que está disponível na internet. O HTML5 está previsto para ser finalizado no ano de 2012 e traz alterações muito interessantes no sentido de aproximar ainda mais a internet do comportamento de aplicações \textit{Desktop}. Dentre as novidades do HTML5 podemos destacar:
+	Seguindo esta evolução, no início de 2008 a W3C (\textit{World Wide Web Consortium})\footnote{W3C é um consórcio de empresas de tecnologia que tem por objetivo desenvolver padrões para criação e interpretação de conteúdo para a \textit{Web}} anunciou a primeira especificação do HTML5, uma nova versão da linguagem de marcação que é utilizada para formatar e organizar o conteúdo que está disponível na internet. O HTML5 está previsto para ser finalizado no ano de 2012 e traz alterações muito interessantes no sentido de aproximar ainda mais a internet do comportamento de aplicações \textit{desktop}. Dentre as novidades do HTML5 podemos destacar:
 	
 	\begin{itemize}
 		\item Novas API's para uso de gráficos;
@@ -96,21 +96,21 @@ de São Paulo \par ICMC - USP}
 
 	Tirando a parte visual da aplicação, as implementações do lado do servidor foram feitas de maneira a seguirem uma implementação usual de AJAX e WebSockets. Ou seja, não ouve preocupação em manter semelhanças nas implementações, e sim em manter a mesma funcionalidade, com o modelo usual de desenvolvimento em cada tecnologia.
 
-	Na aplicação WebSockets, cada mensagem é repassada para todos os outros usuários no instante em que chega ao servidor. Enquanto que na implementação com AJAX, cada mensagem que chega é armazenada em um array em memória, e a cada 0,5 segundos cada cliente faz uma requisição para obter a lista de mensagens do servidor, passando como parâmetro a última mensagem que recebeu.
+	Na aplicação WebSockets, cada mensagem é repassada para todos os outros usuários no instante em que chega ao servidor. Enquanto que na implementação com AJAX, cada mensagem que chega é armazenada em um \textit{array} em memória, e a cada 0,5 segundos cada cliente faz uma requisição para obter a lista de mensagens do servidor, passando como parâmetro a última mensagem que recebeu.
 
-	Dois servidores Ubuntu foram então preparados em uma solução de Cloud Computing, sendo que um executaria o servidor do chat e o outro o script para simular os clientes, de modo que um não interferisse nas medições do outro. Tanto o servidor quanto o \textit{script} imprimiam linhas de log, que foram coletados para a geração das comparações e gráficos utilizados neste relatório.
+	Dois servidores Ubuntu foram então preparados em uma solução de \textit{Cloud Computing}, sendo que um executaria o servidor do \textit{chat} e o outro o script para simular os clientes, de modo que um não interferisse nas medições do outro. Tanto o servidor quanto o \textit{script} imprimiam linhas de log, que foram coletados para a geração das comparações e gráficos utilizados neste relatório.
 
 \section{Tecnologias utilizadas}
 
 	Este trabalho se baseia na comparação entre as tecnologias AJAX e WebSockets. Como WebSocket é uma tecnologia ainda em desenvolvimento, existem poucas linguagens, navegadores e servidores de aplicação que a suportam. Com essas restrições, decidimos por utilizar o framework Node.js\footnote{http://www.nodejs.org}, que suporta nativamente AJAX e WebSockets através do módulo Socket.IO\footnote{http://socket.io}.
 
-	Node.js é um framework para IO (\textit{Input/Output}) assíncrono, cuja linguagem de programação é o JavaScript, mas que é executado no servidor ao invés de em um navegador. JavaScript é ideal para IO assíncrono, já que é uma linguagem baseada em eventos e seu modelo de programação é não bloqueante. O motor JavaScript utilizado pelo Node.js é o Google V8\footnote{http://code.google.com/p/v8/}, que é muito rápido, e compila o JavaScript para código nativo antes de sua execução.
+	Node.js é um \textit{framework} para IO (\textit{Input/Output}) assíncrono, cuja linguagem de programação é o JavaScript, mas que é executado no servidor ao invés de em um navegador. JavaScript é ideal para IO assíncrono, já que é uma linguagem baseada em eventos e seu modelo de programação é não bloqueante. O motor JavaScript utilizado pelo Node.js é o Google V8\footnote{http://code.google.com/p/v8/}, que é muito rápido, e compila o JavaScript para código nativo antes de sua execução.
 
-	A aplicação \textit{Web} foi construída utilizando o framework de aplicações \textit{Web} para Node.js chamado Express\footnote{http://expressjs.com/}, juntamente com a linguagem de templates Jade. No lado do cliente, foram utilizados JQuery\footnote{http://jquery.com}, JQuery UI\footnote{http://jqueryui.com/} e o 52Framework\footnote{http://www.52framework.com/} para montagem do \textit{layout} das páginas.
+	A aplicação \textit{Web} foi construída utilizando o framework de aplicações \textit{Web} para Node.js chamado Express\footnote{http://expressjs.com/}, juntamente com a linguagem de \textit{templates} Jade. No lado do cliente, foram utilizados JQuery\footnote{http://jquery.com}, JQuery UI\footnote{http://jqueryui.com/} e o 52Framework\footnote{http://www.52framework.com/} para montagem do \textit{layout} das páginas.
 
-	O navegador utilizado para os testes da aplicação \textit{Web} foi o Google Chrome 11. Os servidores utilizados para execução dos testes de performance foram máquinas virtuais Ubuntu 10.10 no Rackspace Cloud.\footnote{http://www.rackspace.com/cloud/}
+	O navegador utilizado para os testes da aplicação \textit{Web} foi o Google Chrome 11. Os servidores utilizados para execução dos testes de \textit{performance} foram máquinas virtuais Ubuntu 10.10 no Rackspace Cloud.\footnote{http://www.rackspace.com/cloud/}
 
-	Para a execução dos testes de performance, foram implementados \textit{scripts} em Node.js para as duas tecnologias. Com WebSockets, foi utilizado o módulo websocket-client, enquanto que para a implementação AJAX foram utilizados os recursos HTTP nativos do Node.js.
+	Para a execução dos testes de \textit{performance}, foram implementados \textit{scripts} em Node.js para as duas tecnologias. Com WebSockets, foi utilizado o módulo websocket-client, enquanto que para a implementação AJAX foram utilizados os recursos HTTP nativos do Node.js.
 	
 
 \section{Ambiente}
